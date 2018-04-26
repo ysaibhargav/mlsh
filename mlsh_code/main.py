@@ -1,4 +1,6 @@
 import argparse
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import tensorflow as tf
 parser = argparse.ArgumentParser()
 parser.add_argument('savename', type=str)
@@ -55,7 +57,8 @@ def callback(it):
 
 def train():
     num_timesteps=1e9
-    seed = 1401
+    seed = 5896#1401
+    print("GLOBAL SEED %d"%seed)
     rank = MPI.COMM_WORLD.Get_rank()
     sess = U.single_threaded_session()
     sess.__enter__()

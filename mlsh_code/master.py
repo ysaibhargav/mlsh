@@ -74,7 +74,7 @@ def start(callback, args, workerseed, rank, comm):
             learner.updateSubPolicies(test_seg, num_batches, (mini_ep >= warmup_time))
             # learner.updateSubPolicies(test_seg,
             # log
-            print(("%d: global: %s, local: %s" % (mini_ep, gmean, lmean)))
+            print(("Mini ep %d, goal %d, iteration %d: global: %s, local: %s" % (mini_ep, env.env.realgoal, x, gmean, lmean)))
             if args.s:
                 totalmeans.append(gmean)
                 with open('outfile'+str(x)+'.pickle', 'wb') as fp:
